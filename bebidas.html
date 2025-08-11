@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Central - Palma de Mallorca</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f08 50%, #0f0804 100%);
+            color: #d4af37;
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(20, 12, 8, 0.95);
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .building-icon {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #d4af37;
+            border-radius: 8px;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.2));
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .building-details {
+            position: absolute;
+            top: 15px;
+            width: 80%;
+            height: 20px;
+            border: 2px solid #d4af37;
+            border-radius: 3px;
+            background: rgba(212, 175, 55, 0.2);
+        }
+        
+        .building-details::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 2px;
+            background: #d4af37;
+        }
+        
+        .building-columns {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .column {
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(180deg, #d4af37, #b8941f);
+            border-radius: 1px;
+        }
+        
+        .building-base {
+            position: absolute;
+            bottom: 10px;
+            width: 90%;
+            height: 8px;
+            background: #d4af37;
+            border-radius: 2px;
+        }
+        
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .location {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .menu-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .menu-section {
+            padding: 30px;
+            border-right: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .menu-section:last-child {
+            border-right: none;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+            letter-spacing: 1px;
+        }
+        
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0;
+            color: #e6c757;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dotted rgba(212, 175, 55, 0.3);
+        }
+        
+        .item-info {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+        
+        .item-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        
+        .item-price {
+            font-weight: 600;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            color: #f0d866;
+        }
+        
+        .spirits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+        
+        .spirit-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+        }
+        
+        .decorative-divider {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            }
+            
+            .restaurant-name {
+                font-size: 2.5rem;
+            }
+            
+            .spirits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="header">
+            
+            <h1 class="restaurant-name">BAR CENTRAL</h1>
+            <p class="tagline">SINCE 1920</p>
+            <p class="location">Palma de Mallorca</p>
+        </div>
+        
+        <div class="menu-content">
+            <div class="menu-section">
+                <h2 class="section-title">CAFÉS / COFFEES</h2>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café Espresso</div>
+                        <div class="item-description">Espresso</div>
+                    </div>
+                    <div class="item-price">1,80</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café Cortado</div>
+                        <div class="item-description">Espresso Macchiato</div>
+                    </div>
+                    <div class="item-price">1,90</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café Doble</div>
+                        <div class="item-description">Double Espresso</div>
+                    </div>
+                    <div class="item-price">3,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café Americano</div>
+                        <div class="item-description">Black Coffee</div>
+                    </div>
+                    <div class="item-price">2,20</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café con Leche</div>
+                        <div class="item-description">Coffee with Milk</div>
+                    </div>
+                    <div class="item-price">2,20</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Café Bombón</div>
+                        <div class="item-description">Espresso with Condensed Milk</div>
+                    </div>
+                    <div class="item-price">2,90</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Carajillo</div>
+                        <div class="item-description">Espresso with Brandy, Baileys, Whisky or Rum</div>
+                    </div>
+                    <div class="item-price">3,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Capuccino</div>
+                        <div class="item-description">Espresso with Frothy Milk and Cinnamon</div>
+                    </div>
+                    <div class="item-price">4,20</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Latte Macchiato</div>
+                        <div class="item-description">Frothy Milk with Espresso</div>
+                    </div>
+                    <div class="item-price">4,50</div>
+                </div>
+                
+                <h2 class="section-title">INFUSIONES / TEAS</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Negro, Frutos del Bosque, Rooibos, Rojo, Verde, Menta Poleo, Manzanilla</div>
+                        <div class="item-description">English Breakfast Tea, Wild Berry Tea, Rooibos Tea, Red Tea, Green Tea
+Mint Tea, Chamomile Tea</div>
+                    </div>
+                    <div class="item-price">2,80</div>
+                </div>
+                
+                                <h2 class="section-title">ZUMOS NATURALES / FRESH JUICES</h2>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Zumo de Naranja Natural</div>
+                        <div class="item-description">Fresh Orange Juice</div>
+                    </div>
+                    <div class="item-price">4,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Limonada</div>
+                        <div class="item-description">Lemonade</div>
+                    </div>
+                    <div class="item-price">4,20</div>
+                </div>
+                
+                                <h2 class="section-title">AGUAS Y REFRESCOS / WATER AND SOFT DRINKS</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Agua</div>
+                        <div class="item-description">Still Water</div>
+                    </div>
+                    <div class="item-price">2,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Agua con Gas</div>
+                        <div class="item-description">Sparkling Water</div>
+                    </div>
+                    <div class="item-price">2,70</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Refrescos</div>
+                        <div class="item-description">Coca-Cola, Coca-Cola Zero, Fanta Limón, Fanta Naranja, Sprite</div>
+                    </div>
+                    <div class="item-price">3,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Bebidas Especiales</div>
+                        <div class="item-description">Tónica Royal Bliss, Royal Bitter, Aquarius, Fuze Tea</div>
+                    </div>
+                    <div class="item-price">3,10</div>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <h2 class="section-title">CERVEZAS / BEERS</h2>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Caña San Miguel (0,33 L)</div>
+                        <div class="item-description">Small Beer</div>
+                    </div>
+                    <div class="item-price">3,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Jarra San Miguel (0,50 L)</div>
+                        <div class="item-description">Large Beer</div>
+                    </div>
+                    <div class="item-price">5,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Caña Shandy (0,33 L)</div>
+                        <div class="item-description">Small Beer With Lemon</div>
+                    </div>
+                    <div class="item-price">3,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Jarra Shandy (0,50 L)</div>
+                        <div class="item-description">Large Beer With Lemon</div>
+                    </div>
+                    <div class="item-price">5,10</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Mahou 5 Estrellas</div>
+                        <div class="item-description">Bottled Beer</div>
+                    </div>
+                    <div class="item-price">3,30</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Mahou Tostada Sin Alcohol</div>
+                        <div class="item-description">No Alcohol</div>
+                    </div>
+                    <div class="item-price">3,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Alhambra Reserva 1925</div>
+                        <div class="item-description">Premium Beer</div>
+                    </div>
+                    <div class="item-price">3,90</div>
+                </div>
+                
+                <h2 class="section-title">VINOS / WINES</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Ederra Rioja T. Cza</div>
+                        <div class="item-description">Red Wine</div>
+                    </div>
+                    <div class="item-price">5,00/24,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Ederra Blanco</div>
+                        <div class="item-description">White Wine </div>
+                    </div>
+                    <div class="item-price">4,60/22,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Nuviana Rosado</div>
+                        <div class="item-description">Rosé Wine</div>
+                    </div>
+                    <div class="item-price">4,60/22,00</div>
+                </div>
+                
+                <h2 class="section-title">CAVA</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Anna Codorníu Brut</div>
+                        <div class="item-description"></div>
+                    </div>
+                    <div class="item-price">5,00/26,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Codorníu Clasic Rosé</div>
+                        <div class="item-description"></div>
+                    </div>
+                    <div class="item-price">4,50/24,00</div>
+                </div>
+                
+                <h2 class="section-title">SANGRÍAS Y TINTO DE VERANO</h2>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Sangría de Vino Tinto</div>
+                        <div class="item-description">Red Sangría</div>
+                    </div>
+                    <div class="item-price">8,20/21,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Sangría de Vino Blanco</div>
+                        <div class="item-description">White Sangría</div>
+                    </div>
+                    <div class="item-price">8,20/21,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Sangría de Cava</div>
+                        <div class="item-description">Cava Sangría</div>
+                    </div>
+                    <div class="item-price">9,00/24,00</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Tinto de Verano</div>
+                        <div class="item-description">Summer Red Wine</div>
+                    </div>
+                    <div class="item-price">6,50</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-content">
+            <div class="menu-section">
+                <h2 class="section-title">CÓCTELES / COCKTAILS</h2>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Aperol Spritz</div>
+                        <div class="item-description">Aperol, Prosecco, Soda</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Campari Spritz</div>
+                        <div class="item-description">Campari, Prosecco, Soda</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Hugo</div>
+                        <div class="item-description">Elderflower Liqueur, Cava, Soda</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Negroni</div>
+                        <div class="item-description">Campari, Vermouth, Gin</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">San Francisco</div>
+                        <div class="item-description">Peach Juice, Orange Juice, Pineapple Juice, Strawberry Syrup, Vodka</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Mojito</div>
+                        <div class="item-description">Rum, Brown Sugar, Mint, Lime, Crushed Ice</div>
+                    </div>
+                    <div class="item-price">10,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Caipirinha</div>
+                        <div class="item-description">Cachaça, Lime, Brown Sugar, Crushed Ice</div>
+                    </div>
+                    <div class="item-price">10,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Sex on the Beach</div>
+                        <div class="item-description">Vodka, Orange Juice, Peach Liqueur, Cranberry Juice, Grenadine, Lime</div>
+                    </div>
+                    <div class="item-price">9,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Margarita Clásica</div>
+                        <div class="item-description">Tequila, Triple Sec, Lemon</div>
+                    </div>
+                    <div class="item-price">10,50</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-name">Piña Colada</div>
+                        <div class="item-description">Rum, Coconut, Pineapple Juice, Cream</div>
+                    </div>
+                    <div class="item-price">10,50</div>
+                </div>
+            </div>
+            
+           <div class="menu-section">
+    <h2 class="section-title">DESTILADOS / SPIRITS</h2>
+    <p style="text-align: center; font-style: italic; margin-bottom: 20px; color: #e6c757;">
+        Chupito / Shot - Copa / Glass - Combinado / Mixed Drink
+    </p>
+
+    <div class="menu-item">
+        <div class="item-info">
+            <div class="item-name">Vodka</div>
+        </div>
+        <div class="item-price">3,0 / 5,50 /9,00</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-info">
+            <div class="item-name">Whisky</div>
+        </div>
+        <div class="item-price">3,0 / 5,50 /9,00</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-info">
+            <div class="item-name">Ron - Rum</div>
+        </div>
+        <div class="item-price">3,0 / 5,50 /9,00</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-info">
+            <div class="item-name">Ginebra - Gin</div>
+        </div>
+        <div class="item-price">3,0 / 5,50 /9,00</div>
+    </div>
+
+  <!-- Imagen alineada con los items -->
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
+    <img src="Logo de _Grupo Índico_ en dorado.png" alt="" style="height:300px;">
+</div>
+    </div>
+</div>
+                    <div class="spirit-item">
+            
+                    </div>
+                </div>
+                
+            
+                
+            
+                
+
+                
+                
+                <div class="decorative-divider">✦ ◆ ✦</div>
+                
+                <div style="text-align: center; font-style: italic; color: #d4af37; margin-top: 30px;">
+                    <p>"Tradición desde 1920"</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">
+                        Bar Central - Un lugar con historia en el corazón de Palma
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

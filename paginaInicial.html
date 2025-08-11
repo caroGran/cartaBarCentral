@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Central - Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f08 50%, #0f0804 100%);
+            color: #d4af37;
+            font-family: 'Crimson Text', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .home-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(20, 12, 8, 0.95);
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header {
+            padding-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .location {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .language-switcher {
+            margin-bottom: 30px;
+        }
+
+        .language-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            text-decoration: none;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+
+        .language-link:hover {
+            color: #f0d866;
+        }
+
+        .language-link.active {
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .menu-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #e6c757;
+            text-decoration: none;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px;
+            transition: background 0.3s, transform 0.3s, color 0.3s;
+        }
+
+        .menu-link:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+            color: #f0d866;
+        }
+
+        .decorative-divider {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .restaurant-name {
+                font-size: 2.5rem;
+            }
+            .menu-link {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="header">
+            <h1 class="restaurant-name">BAR CENTRAL</h1>
+            <p class="tagline">SINCE 1920</p>
+            <p class="location">Palma de Mallorca</p>
+        </div>
+        
+       
+
+        <div class="menu-links">
+            <a href="bebidas.html" class="menu-link">Bebidas/Drinks</a>
+            <a href="menu.html" class="menu-link">Carta/Menú</a>
+            <a href="desayunos.html" class="menu-link">Desayunos/Breakfast</a>
+        </div>
+
+        <div class="decorative-divider">✦ ◆ ✦</div>
+        
+        <div style="text-align: center; font-style: italic; color: #d4af37; margin: 30px 0;">
+            <p>"Tradición desde 1920"</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                Bar Central - Un lugar con historia en el corazón de Palma
+            </p>
+        </div>
+    </div>
+</body>
+</html>
